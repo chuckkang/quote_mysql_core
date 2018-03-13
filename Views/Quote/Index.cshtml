@@ -1,0 +1,28 @@
+<br>
+<div  class="text-center">
+	<div>
+		<form method="post" action="/quote/addquote">
+			Name: <input type="text" name="name" placeholder="Enter Name"><br>
+			Quote: <input type="text" name="quote" placeholder="Insert Your Quote"><br>
+			<button type="submit" class="btn btn-primary">Submit Your Quote</button>
+		</form>
+	</div>
+
+	<div class="aligncenter">
+		@if (ViewData["Message"] != string.Empty || ViewData["Message"] != null)
+		{
+			<div class="text-warning"><h2>@ViewData["Message"]</h2></div>
+		}
+		@foreach (var quote in ViewBag.allquotes)
+		{
+			<div class="text-right"><a href="/quote/delete/@quote["quoteid"]">delete</a></div>
+			<div class="quoteblock">
+				<h2>@quote["quote"]</h2>
+				<p><strong>Posted By: </strong>@quote["username"]</p>
+				<p><strong>Posted:</strong> @quote["created_at"] <strong>Modified:</strong> @quote["modified_at"]</p>
+				<p></p>
+			</div>
+			<br>
+		}
+	</div>
+</div>
