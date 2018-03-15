@@ -38,6 +38,10 @@ namespace mvc_quoting_core.Controllers
 		{	
 			DbConnector.Execute($"DELETE FROM quotes WHERE quoteid = {id}");
 			ViewBag.Message = "Your quote has been deleted";
+			// you can also use temo data to pass into a redirect but you need to include the session service:
+			// TempData["message"] = "Good Job"  will span one redirect
+
+			// this redirecttoaction passes along an the message into the Index(string)
 			return RedirectToAction("Index", new { message = "Your quote has been deleted"});
 		}
 		public IActionResult Error()
